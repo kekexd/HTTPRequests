@@ -1,35 +1,39 @@
 var https = require('https');
+var getHTML = require('./httpFunctions');
 
-function getHTML (options, callback) {
-  https.get(requestOptions, function (response) {
-    if(response.statusCode !== 200) {
-      callback(new Error('Request Failed with Status Code ' + response.statusCode), null);
-      return;
-    }
+var requestOptions = {
+  host: 'sytantris.github.io',
+  path: '/http-examples/step5.html'
+};
 
-    response.setEncoding('utf8');
-    response.on('data', function (chunk) {
-      var temp = '';
-      temp += chunk;
-      //console.log(temp + '\n');
-      callback(temp);
-    });
+// function getHTML (options, callback) {
+//   https.get(options, function (response) {
+//     if(response.statusCode !== 200) {
+//       callback(new Error('Request Failed with Status Code ' + response.statusCode), null);
+//       return;
+//     }
 
-    response.on('end', function() {
-      console.log('Response stream complete.');
-    });
+//     response.setEncoding('utf8');
+//     response.on('data', function (chunk) {
+//       var temp = '';
+//       temp += chunk;
+//       //console.log(temp + '\n');
+//       callback(temp);
+//     });
+//     response.on('end', function() {
+//       console.log('Response stream complete.');
+//     });
 
-  }); //end of get
-
-}
+//   }); //end of get
+// }
 
 function printHTML (html) {
   console.log(html);
 }
 
-var requestOptions = {
-  host: 'sytantris.github.io',
-  path: '/http-examples/step4.html'
-};
+// var requestOptions = {
+//   host: 'sytantris.github.io',
+//   path: '/http-examples/step4.html'
+// };
 
 getHTML(requestOptions, printHTML)
