@@ -1,4 +1,4 @@
-var https = require('https');
+//var https = require('https');
 var getHTML = require('./httpFunctions');
 
 var requestOptions = {
